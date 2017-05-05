@@ -13,7 +13,7 @@ public class ScanSave {
     static String region;
     public static void main(String[] args) throws IOException, InterruptedException {
         fileWriter = new FileWriter(new File("listStad.txt"), true);
-        for (int i = 1; i <3000; i++) {//23721
+        for (int i = 100; i <10000; i++) {//23721
             try {
                 doc = Jsoup.connect("http://pogodnik.com/" + i).get();
             } catch (Exception e) {
@@ -30,19 +30,19 @@ public class ScanSave {
                 continue;
             }
 
-            if (!mas2[mas2.length - 1].equals("Украина")) {
+            //if (!mas2[mas2.length - 1].equals("Украина")) {//Отфильтровываем города Украины
                 int indFin = 0;
                 for (int j = 0; j < mas.length; j++) {
                     if (mas[j].equals("Прогноз")) indFin = j;
                 }
-                fileWriter.write(i + " | ");
+                fileWriter.write(i + " : ");
                 for (int j = 7; j < indFin; j++) {
                     fileWriter.write(mas[j] + " ");
                 }
-                fileWriter.write(" | "+region);
+                fileWriter.write(": "+region);
                 fileWriter.write("\n");
                 fileWriter.flush();
-            }
+            //}
         }
         fileWriter.close();
     }
