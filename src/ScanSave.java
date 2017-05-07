@@ -13,7 +13,7 @@ public class ScanSave {
     static String region;
     public static void main(String[] args) throws IOException, InterruptedException {
         fileWriter = new FileWriter(new File("listStad.txt"), true);
-        for (int i = 100; i <10000; i++) {//23721
+        for (int i = 20000; i <23721; i++) {//23721
             try {
                 doc = Jsoup.connect("http://pogodnik.com/" + i).get();
             } catch (Exception e) {
